@@ -1,0 +1,226 @@
+{
+  "scenarios": {
+    "LOW_DENSITY": {
+      "detection": {
+        "precision": 0.9356,
+        "recall": 0.9074,
+        "mAP_0.5": 0.9223,
+        "mean_confidence": 0.6135,
+        "split_detection_count": 0
+      },
+      "navigation": {
+        "path_length_adaptive_m": 529.5,
+        "path_length_boustrophedon_m": 161.5,
+        "priority_coverage_ratio": 0.9737,
+        "total_coverage_ratio": 1.0,
+        "replanning_events": 5
+      },
+      "spraying": {
+        "uniform": {
+          "chemical_pct": 100.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 90.0
+        },
+        "detection_only": {
+          "chemical_pct": 60.31,
+          "weed_coverage_pct": 87.5,
+          "false_spray_rate_pct": 85.49
+        },
+        "dual_threshold": {
+          "chemical_pct": 10.0,
+          "weed_coverage_pct": 84.38,
+          "false_spray_rate_pct": 15.62
+        }
+      },
+      "latency_ms": {
+        "T_v_mean": 22.04,
+        "T_v_max": 34.635,
+        "T_m_mean": 6.972,
+        "T_m_max": 11.349,
+        "T_p_mean": 10.635,
+        "T_p_max": 12.712,
+        "T_total_mean": 37.223,
+        "T_total_max": 95.0
+      }
+    },
+    "MEDIUM_DENSITY": {
+      "detection": {
+        "precision": 0.9152,
+        "recall": 0.8771,
+        "mAP_0.5": 0.8926,
+        "mean_confidence": 0.6039,
+        "split_detection_count": 0
+      },
+      "navigation": {
+        "path_length_adaptive_m": 529.5,
+        "path_length_boustrophedon_m": 161.5,
+        "priority_coverage_ratio": 1.0,
+        "total_coverage_ratio": 1.0,
+        "replanning_events": 5
+      },
+      "spraying": {
+        "uniform": {
+          "chemical_pct": 100.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 74.69
+        },
+        "detection_only": {
+          "chemical_pct": 90.31,
+          "weed_coverage_pct": 96.3,
+          "false_spray_rate_pct": 73.01
+        },
+        "dual_threshold": {
+          "chemical_pct": 31.25,
+          "weed_coverage_pct": 96.3,
+          "false_spray_rate_pct": 22.0
+        }
+      },
+      "latency_ms": {
+        "T_v_mean": 21.837,
+        "T_v_max": 32.415,
+        "T_m_mean": 6.985,
+        "T_m_max": 11.75,
+        "T_p_mean": 8.639,
+        "T_p_max": 11.266,
+        "T_total_mean": 37.272,
+        "T_total_max": 95.0
+      }
+    },
+    "HIGH_DENSITY": {
+      "detection": {
+        "precision": 0.8679,
+        "recall": 0.8475,
+        "mAP_0.5": 0.8607,
+        "mean_confidence": 0.6041,
+        "split_detection_count": 0
+      },
+      "navigation": {
+        "path_length_adaptive_m": 529.5,
+        "path_length_boustrophedon_m": 161.5,
+        "priority_coverage_ratio": 0.9939,
+        "total_coverage_ratio": 1.0,
+        "replanning_events": 5
+      },
+      "spraying": {
+        "uniform": {
+          "chemical_pct": 100.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 52.5
+        },
+        "detection_only": {
+          "chemical_pct": 78.12,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 39.2
+        },
+        "dual_threshold": {
+          "chemical_pct": 50.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 5.0
+        }
+      },
+      "latency_ms": {
+        "T_v_mean": 22.224,
+        "T_v_max": 34.252,
+        "T_m_mean": 7.029,
+        "T_m_max": 12.001,
+        "T_p_mean": 9.551,
+        "T_p_max": 11.379,
+        "T_total_mean": 38.049,
+        "T_total_max": 95.0
+      }
+    },
+    "SHADOWED": {
+      "detection": {
+        "precision": 0.884,
+        "recall": 0.8634,
+        "mAP_0.5": 0.8785,
+        "mean_confidence": 0.5821,
+        "split_detection_count": 0
+      },
+      "navigation": {
+        "path_length_adaptive_m": 529.5,
+        "path_length_boustrophedon_m": 161.5,
+        "priority_coverage_ratio": 0.9464,
+        "total_coverage_ratio": 1.0,
+        "replanning_events": 5
+      },
+      "spraying": {
+        "uniform": {
+          "chemical_pct": 100.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 74.69
+        },
+        "detection_only": {
+          "chemical_pct": 71.88,
+          "weed_coverage_pct": 85.19,
+          "false_spray_rate_pct": 70.0
+        },
+        "dual_threshold": {
+          "chemical_pct": 33.75,
+          "weed_coverage_pct": 70.37,
+          "false_spray_rate_pct": 47.22
+        }
+      },
+      "latency_ms": {
+        "T_v_mean": 21.951,
+        "T_v_max": 33.119,
+        "T_m_mean": 7.093,
+        "T_m_max": 12.916,
+        "T_p_mean": 7.768,
+        "T_p_max": 11.311,
+        "T_total_mean": 36.289,
+        "T_total_max": 95.0
+      }
+    },
+    "OVERLAPPING": {
+      "detection": {
+        "precision": 0.8304,
+        "recall": 0.7957,
+        "mAP_0.5": 0.7118,
+        "mean_confidence": 0.5685,
+        "split_detection_count": 0
+      },
+      "navigation": {
+        "path_length_adaptive_m": 529.5,
+        "path_length_boustrophedon_m": 161.5,
+        "priority_coverage_ratio": 1.0,
+        "total_coverage_ratio": 1.0,
+        "replanning_events": 5
+      },
+      "spraying": {
+        "uniform": {
+          "chemical_pct": 100.0,
+          "weed_coverage_pct": 100.0,
+          "false_spray_rate_pct": 58.13
+        },
+        "detection_only": {
+          "chemical_pct": 45.31,
+          "weed_coverage_pct": 76.87,
+          "false_spray_rate_pct": 28.97
+        },
+        "dual_threshold": {
+          "chemical_pct": 22.19,
+          "weed_coverage_pct": 52.99,
+          "false_spray_rate_pct": 0.0
+        }
+      },
+      "latency_ms": {
+        "T_v_mean": 21.745,
+        "T_v_max": 32.488,
+        "T_m_mean": 6.856,
+        "T_m_max": 11.956,
+        "T_p_mean": 8.868,
+        "T_p_max": 10.969,
+        "T_total_mean": 37.187,
+        "T_total_max": 95.0
+      }
+    }
+  },
+  "aggregate": {
+    "mean_chemical_reduction_pct": 70.56,
+    "mean_path_length_improvement_pct": -227.86,
+    "mean_decision_latency_ms": 37.2,
+    "mean_total_coverage_ratio": 1.0,
+    "mean_replanning_events": 5.0
+  }
+}

@@ -55,7 +55,6 @@ models/**/*.weights
 *.h5
 
 # Output files
-outputs/
 *.log
 *.csv
 runs/
