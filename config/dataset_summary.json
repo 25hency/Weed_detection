@@ -1,0 +1,54 @@
+{
+  "total": 22774,
+  "train": 15942,
+  "val": 3416,
+  "test": 3416,
+  "num_classes": 17,
+  "class_names": {
+    "0": "Chinee_apple",
+    "1": "Lantana",
+    "2": "Parkinsonia",
+    "3": "Parthenium",
+    "4": "Prickly_acacia",
+    "5": "Rubber_vine",
+    "6": "Siam_weed",
+    "7": "Snake_weed",
+    "8": "Black-grass",
+    "9": "Charlock",
+    "10": "Cleavers",
+    "11": "Fat_Hen",
+    "12": "Loose_Silky-bent",
+    "13": "Scentless_Mayweed",
+    "14": "Shepherds_Purse",
+    "15": "crop",
+    "16": "background"
+  },
+  "split_ratios": {
+    "train": 0.70,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "splits": {
+    "train": {
+      "count": 15942,
+      "domain_source": {
+        "DeepWeeds": 12256,
+        "PlantSeedlings": 3686
+      }
+    },
+    "val": {
+      "count": 3416,
+      "domain_source": {
+        "DeepWeeds": 2627,
+        "PlantSeedlings": 789
+      }
+    },
+    "test": {
+      "count": 3416,
+      "domain_source": {
+        "DeepWeeds": 2626,
+        "PlantSeedlings": 790
+      }
+    }
+  }
+}
