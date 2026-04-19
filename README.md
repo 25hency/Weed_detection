@@ -43,9 +43,23 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### Downloading Datasets
+
+Before running the project, download the required datasets from Kaggle:
+
+1. **DeepWeeds Dataset**
+   - Download: https://www.kaggle.com/datasets/imsparsh/deepweeds
+   - Extract to: `dataset/DeepWeeds/`
+
+2. **Plant Seedlings Dataset (v2)**
+   - Download: https://www.kaggle.com/datasets/vbookshelf/v2-plant-seedlings-dataset
+   - Extract to: `dataset/PlantSeedlings/`
+
+> **Note**: You need a Kaggle account to download these datasets. Download the files from the links above and extract them into the appropriate dataset directories.
+
 ### Running the Project
 
-1. **Prepare the dataset**
+1. **Prepare the dataset** (processes and converts datasets to YOLO format)
 ```bash
 python src/detection/prepare_dataset.py
 ```
@@ -55,23 +69,29 @@ python src/detection/prepare_dataset.py
 python src/detection/train_yolo.py
 ```
 
-3. **Run the detection pipeline**
+3. **Run the main detection pipeline**
 ```bash
 python main.py
 ```
 
-4. **View the simulation (Optional)**
+4. **View the interactive web simulation**
 ```bash
-# Serve the web visualization
+# Start the web server
 python -m http.server 8080
-# Open http://localhost:8080 in your browser
+
+# Then open your browser and navigate to:
+# http://localhost:8080
 ```
+
+The web interface will show the interactive 3D farm visualization with real-time weed detection and robot navigation.
 
 ## 📁 Project Structure
 
 ```
 Weed Detection/
 ├── main.py                 # Main entry point
+├── requirements.txt        # Python dependencies
+├── .gitignore             # Git ignore rules
 ├── config/                 # Configuration files
 │   ├── dataset_summary.json
 │   └── weed_dataset.yaml
@@ -91,6 +111,10 @@ Weed Detection/
 ├── outputs/              # Results and analysis (excluded from git)
 ├── evaluation/           # Evaluation scripts
 ├── visual_simulation/    # Web-based farm visualization
+│   ├── index.html
+│   ├── simulation.js
+│   ├── styles.css
+│   └── visual_data.json
 └── README.md            # This file
 ```
 
@@ -115,6 +139,26 @@ Weed Detection/
 - Interactive 3D farm simulation
 - Real-time weed detection visualization
 - Robot movement tracking
+
+## 🌐 Web Visualization
+
+The project includes an interactive web-based farm simulator:
+
+**How to run:**
+```bash
+python -m http.server 8080
+```
+
+Then open your browser and go to: **http://localhost:8080**
+
+**Features:**
+- Real-time farm visualization
+- Robot navigation display
+- Weed detection heatmap overlay
+- Interactive controls for simulation parameters
+- Export simulation results as JSON
+
+Stop the server with `Ctrl+C` in the terminal.
 
 ## 📊 Configuration
 
@@ -154,13 +198,25 @@ The system generates:
 
 ## 🔬 Datasets
 
-This project uses publicly available datasets:
-- **DeepWeeds**: Deep-learning benchmark for weed detection
-- **PlantSeedlings**: Plant seedling classification dataset
+This project uses two publicly available datasets from Kaggle:
 
-Datasets are excluded from git but can be downloaded from:
-- DeepWeeds: https://github.com/AlexOlsen/DeepWeeds
-- PlantSeedlings: https://www.kaggle.com/c/plant-seedlings-classification
+### DeepWeeds Dataset
+- **Description**: Deep-learning benchmark for weed detection
+- **Download**: https://www.kaggle.com/datasets/imsparsh/deepweeds
+- **Extract to**: `dataset/DeepWeeds/`
+
+### Plant Seedlings v2 Dataset
+- **Description**: Plant seedling classification dataset
+- **Download**: https://www.kaggle.com/datasets/vbookshelf/v2-plant-seedlings-dataset
+- **Extract to**: `dataset/PlantSeedlings/`
+
+**How to download:**
+1. Create a Kaggle account (free) at https://www.kaggle.com
+2. Click the download button on each dataset page
+3. Extract the downloaded zip files to the respective `dataset/` subdirectories
+4. Run `python src/detection/prepare_dataset.py` to prepare the data for training
+
+> **Note**: These datasets are excluded from git (see `.gitignore`) to keep the repository size manageable. They will be generated/downloaded locally on your machine.
 
 ## 🛠️ Development
 
