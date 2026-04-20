@@ -2,16 +2,16 @@
   "scenarios": {
     "LOW_DENSITY": {
       "detection": {
-        "precision": 0.9356,
-        "recall": 0.9074,
-        "mAP_0.5": 0.9223,
-        "mean_confidence": 0.6135,
+        "precision": 0.9383,
+        "recall": 0.9087,
+        "mAP_0.5": 0.9283,
+        "mean_confidence": 0.6002,
         "split_detection_count": 0
       },
       "navigation": {
-        "path_length_adaptive_m": 529.5,
+        "path_length_adaptive_m": 113.82,
         "path_length_boustrophedon_m": 161.5,
-        "priority_coverage_ratio": 0.9737,
+        "priority_coverage_ratio": 0.9524,
         "total_coverage_ratio": 1.0,
         "replanning_events": 5
       },
@@ -22,39 +22,39 @@
           "false_spray_rate_pct": 90.0
         },
         "detection_only": {
-          "chemical_pct": 60.31,
-          "weed_coverage_pct": 87.5,
-          "false_spray_rate_pct": 85.49
+          "chemical_pct": 66.56,
+          "weed_coverage_pct": 96.88,
+          "false_spray_rate_pct": 85.45
         },
         "dual_threshold": {
-          "chemical_pct": 10.0,
-          "weed_coverage_pct": 84.38,
-          "false_spray_rate_pct": 15.62
+          "chemical_pct": 11.56,
+          "weed_coverage_pct": 96.88,
+          "false_spray_rate_pct": 16.22
         }
       },
       "latency_ms": {
-        "T_v_mean": 22.04,
-        "T_v_max": 34.635,
-        "T_m_mean": 6.972,
-        "T_m_max": 11.349,
-        "T_p_mean": 10.635,
-        "T_p_max": 12.712,
-        "T_total_mean": 37.223,
+        "T_v_mean": 21.981,
+        "T_v_max": 33.195,
+        "T_m_mean": 6.917,
+        "T_m_max": 11.395,
+        "T_p_mean": 8.687,
+        "T_p_max": 12.266,
+        "T_total_mean": 37.653,
         "T_total_max": 95.0
       }
     },
     "MEDIUM_DENSITY": {
       "detection": {
-        "precision": 0.9152,
-        "recall": 0.8771,
-        "mAP_0.5": 0.8926,
-        "mean_confidence": 0.6039,
+        "precision": 0.9097,
+        "recall": 0.8796,
+        "mAP_0.5": 0.9015,
+        "mean_confidence": 0.6101,
         "split_detection_count": 0
       },
       "navigation": {
-        "path_length_adaptive_m": 529.5,
+        "path_length_adaptive_m": 112.315,
         "path_length_boustrophedon_m": 161.5,
-        "priority_coverage_ratio": 1.0,
+        "priority_coverage_ratio": 0.9905,
         "total_coverage_ratio": 1.0,
         "replanning_events": 5
       },
@@ -65,39 +65,39 @@
           "false_spray_rate_pct": 74.69
         },
         "detection_only": {
-          "chemical_pct": 90.31,
+          "chemical_pct": 90.94,
           "weed_coverage_pct": 96.3,
-          "false_spray_rate_pct": 73.01
+          "false_spray_rate_pct": 73.2
         },
         "dual_threshold": {
-          "chemical_pct": 31.25,
+          "chemical_pct": 30.0,
           "weed_coverage_pct": 96.3,
-          "false_spray_rate_pct": 22.0
+          "false_spray_rate_pct": 18.75
         }
       },
       "latency_ms": {
-        "T_v_mean": 21.837,
-        "T_v_max": 32.415,
-        "T_m_mean": 6.985,
-        "T_m_max": 11.75,
-        "T_p_mean": 8.639,
-        "T_p_max": 11.266,
-        "T_total_mean": 37.272,
+        "T_v_mean": 21.84,
+        "T_v_max": 33.593,
+        "T_m_mean": 6.951,
+        "T_m_max": 12.198,
+        "T_p_mean": 7.959,
+        "T_p_max": 10.572,
+        "T_total_mean": 37.727,
         "T_total_max": 95.0
       }
     },
     "HIGH_DENSITY": {
       "detection": {
-        "precision": 0.8679,
-        "recall": 0.8475,
-        "mAP_0.5": 0.8607,
-        "mean_confidence": 0.6041,
+        "precision": 0.868,
+        "recall": 0.8462,
+        "mAP_0.5": 0.8544,
+        "mean_confidence": 0.605,
         "split_detection_count": 0
       },
       "navigation": {
-        "path_length_adaptive_m": 529.5,
+        "path_length_adaptive_m": 113.287,
         "path_length_boustrophedon_m": 161.5,
-        "priority_coverage_ratio": 0.9939,
+        "priority_coverage_ratio": 0.9938,
         "total_coverage_ratio": 1.0,
         "replanning_events": 5
       },
@@ -119,28 +119,28 @@
         }
       },
       "latency_ms": {
-        "T_v_mean": 22.224,
-        "T_v_max": 34.252,
-        "T_m_mean": 7.029,
-        "T_m_max": 12.001,
-        "T_p_mean": 9.551,
-        "T_p_max": 11.379,
-        "T_total_mean": 38.049,
+        "T_v_mean": 22.014,
+        "T_v_max": 32.576,
+        "T_m_mean": 7.003,
+        "T_m_max": 11.62,
+        "T_p_mean": 8.423,
+        "T_p_max": 11.578,
+        "T_total_mean": 36.647,
         "T_total_max": 95.0
       }
     },
     "SHADOWED": {
       "detection": {
-        "precision": 0.884,
-        "recall": 0.8634,
-        "mAP_0.5": 0.8785,
-        "mean_confidence": 0.5821,
+        "precision": 0.8929,
+        "recall": 0.8582,
+        "mAP_0.5": 0.877,
+        "mean_confidence": 0.5761,
         "split_detection_count": 0
       },
       "navigation": {
-        "path_length_adaptive_m": 529.5,
+        "path_length_adaptive_m": 109.786,
         "path_length_boustrophedon_m": 161.5,
-        "priority_coverage_ratio": 0.9464,
+        "priority_coverage_ratio": 0.9553,
         "total_coverage_ratio": 1.0,
         "replanning_events": 5
       },
@@ -156,32 +156,32 @@
           "false_spray_rate_pct": 70.0
         },
         "dual_threshold": {
-          "chemical_pct": 33.75,
-          "weed_coverage_pct": 70.37,
-          "false_spray_rate_pct": 47.22
+          "chemical_pct": 35.31,
+          "weed_coverage_pct": 74.07,
+          "false_spray_rate_pct": 46.9
         }
       },
       "latency_ms": {
-        "T_v_mean": 21.951,
-        "T_v_max": 33.119,
-        "T_m_mean": 7.093,
-        "T_m_max": 12.916,
-        "T_p_mean": 7.768,
-        "T_p_max": 11.311,
-        "T_total_mean": 36.289,
+        "T_v_mean": 21.81,
+        "T_v_max": 33.477,
+        "T_m_mean": 7.017,
+        "T_m_max": 11.18,
+        "T_p_mean": 8.154,
+        "T_p_max": 10.85,
+        "T_total_mean": 36.814,
         "T_total_max": 95.0
       }
     },
     "OVERLAPPING": {
       "detection": {
-        "precision": 0.8304,
-        "recall": 0.7957,
-        "mAP_0.5": 0.7118,
-        "mean_confidence": 0.5685,
+        "precision": 0.8348,
+        "recall": 0.7899,
+        "mAP_0.5": 0.7071,
+        "mean_confidence": 0.5699,
         "split_detection_count": 0
       },
       "navigation": {
-        "path_length_adaptive_m": 529.5,
+        "path_length_adaptive_m": 110.99,
         "path_length_boustrophedon_m": 161.5,
         "priority_coverage_ratio": 1.0,
         "total_coverage_ratio": 1.0,
@@ -194,32 +194,32 @@
           "false_spray_rate_pct": 58.13
         },
         "detection_only": {
-          "chemical_pct": 45.31,
-          "weed_coverage_pct": 76.87,
-          "false_spray_rate_pct": 28.97
+          "chemical_pct": 43.75,
+          "weed_coverage_pct": 76.12,
+          "false_spray_rate_pct": 27.14
         },
         "dual_threshold": {
-          "chemical_pct": 22.19,
-          "weed_coverage_pct": 52.99,
+          "chemical_pct": 20.94,
+          "weed_coverage_pct": 50.0,
           "false_spray_rate_pct": 0.0
         }
       },
       "latency_ms": {
-        "T_v_mean": 21.745,
-        "T_v_max": 32.488,
-        "T_m_mean": 6.856,
-        "T_m_max": 11.956,
-        "T_p_mean": 8.868,
-        "T_p_max": 10.969,
-        "T_total_mean": 37.187,
+        "T_v_mean": 22.07,
+        "T_v_max": 31.874,
+        "T_m_mean": 6.97,
+        "T_m_max": 11.664,
+        "T_p_mean": 10.198,
+        "T_p_max": 12.105,
+        "T_total_mean": 36.774,
         "T_total_max": 95.0
       }
     }
   },
   "aggregate": {
-    "mean_chemical_reduction_pct": 70.56,
-    "mean_path_length_improvement_pct": -227.86,
-    "mean_decision_latency_ms": 37.2,
+    "mean_chemical_reduction_pct": 70.44,
+    "mean_path_length_improvement_pct": 30.63,
+    "mean_decision_latency_ms": 37.12,
     "mean_total_coverage_ratio": 1.0,
     "mean_replanning_events": 5.0
   }

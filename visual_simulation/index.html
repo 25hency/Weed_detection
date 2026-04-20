@@ -15,19 +15,17 @@
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <header id="app-header">
         <div class="header-left">
-            <div class="logo-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="12" stroke="url(#grad1)" stroke-width="2.5"/>
-                    <path d="M14 6 L14 22 M8 10 L14 6 L20 10 M8 18 L14 22 L20 18" stroke="url(#grad1)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                    <defs><linearGradient id="grad1" x1="0" y1="0" x2="28" y2="28"><stop offset="0%" stop-color="#00e676"/><stop offset="100%" stop-color="#00bcd4"/></linearGradient></defs>
-                </svg>
-            </div>
             <div>
                 <h1>AFRS Visual Simulation</h1>
                 <p class="subtitle">Autonomous Field Robot — Weed Detection & Precision Spraying</p>
             </div>
         </div>
         <div class="header-right">
+            <!-- Connection Status Badge -->
+            <div id="api-status" class="api-status" title="Backend connection status">
+                <span class="api-status-dot"></span>
+                <span class="api-status-text">Checking…</span>
+            </div>
             <div class="upload-area" id="upload-area">
                 <input type="file" id="file-input" accept="image/*" hidden>
                 <input type="file" id="json-input" accept=".json" hidden>
@@ -35,14 +33,28 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
                     Upload Field Image
                 </button>
-                <button id="load-json-btn" class="btn btn-secondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    Load Simulation Data
-                </button>
-                <span id="json-status" class="json-status"></span>
             </div>
         </div>
     </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  LOADING OVERLAY                                                   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="loading-overlay" class="loading-overlay" style="display:none">
+        <div class="loading-card">
+            <div class="loading-spinner"></div>
+            <p class="loading-title" id="loading-title">Running Simulation…</p>
+            <p class="loading-subtitle" id="loading-subtitle">Computing detection, heatmap, path planning & spray decisions</p>
+            <div class="loading-progress-track">
+                <div class="loading-progress-fill" id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  TOAST NOTIFICATIONS                                               -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <!--  MAIN LAYOUT                                                       -->
@@ -107,6 +119,11 @@
                     <option value="shadowed">Shadowed</option>
                     <option value="overlapping">Overlapping</option>
                 </select>
+                <!-- Data source indicator -->
+                <div id="data-source-tag" class="data-source-tag">
+                    <span class="data-source-icon" id="data-source-icon">⚡</span>
+                    <span class="data-source-label" id="data-source-label">Ready</span>
+                </div>
             </div>
 
             <!-- Layer Toggles -->
@@ -129,7 +146,7 @@
                     <label class="toggle-row">
                         <input type="checkbox" id="layer-path" checked>
                         <span class="toggle-slider"></span>
-                        <span class="toggle-label"><span class="dot" style="background:#42a5f5"></span>Nav. Path</span>
+                        <span class="toggle-label"><span class="dot" style="background:#00d4ff"></span>Nav. Path</span>
                     </label>
                     <label class="toggle-row">
                         <input type="checkbox" id="layer-spray" checked>
@@ -200,28 +217,11 @@
                 <div class="legend-items">
                     <div class="legend-item"><span class="legend-swatch" style="background:#0d47a1"></span> Spray Here</div>
                     <div class="legend-item"><span class="legend-swatch" style="background:#616161"></span> Skip</div>
-                    <div class="legend-item"><span class="legend-swatch dashed-swatch"></span> Boustrophedon</div>
-                    <div class="legend-item"><span class="legend-swatch" style="background:#42a5f5"></span> A* Path</div>
+                    <div class="legend-item"><span class="legend-swatch" style="background:#c0c0c0"></span> Boustrophedon</div>
+                    <div class="legend-item"><span class="legend-swatch" style="background:#00d4ff"></span> A* Path</div>
                 </div>
             </div>
 
-            <!-- Thresholds -->
-            <div class="panel-section">
-                <h3 class="section-title">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-                    Thresholds
-                </h3>
-                <div class="threshold-row">
-                    <label>τ<sub>d</sub> (density)</label>
-                    <input type="range" id="threshold-density" min="0.1" max="0.7" step="0.05" value="0.3" class="slider-sm">
-                    <span id="val-density" class="threshold-val">0.30</span>
-                </div>
-                <div class="threshold-row">
-                    <label>τ<sub>c</sub> (confidence)</label>
-                    <input type="range" id="threshold-confidence" min="0.3" max="0.8" step="0.05" value="0.5" class="slider-sm">
-                    <span id="val-confidence" class="threshold-val">0.50</span>
-                </div>
-            </div>
         </aside>
     </main>
 

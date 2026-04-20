@@ -110,6 +110,79 @@ body {
     letter-spacing: 0.02em;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ── API Connection Status Badge ───────────────────────────────────────────── */
+.api-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: rgba(100, 116, 139, 0.15);
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    color: var(--text-muted);
+    cursor: default;
+    transition: all 0.4s var(--ease);
+    white-space: nowrap;
+}
+
+.api-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.4s var(--ease);
+}
+
+.api-status.connected {
+    background: rgba(0, 230, 118, 0.1);
+    border-color: rgba(0, 230, 118, 0.3);
+    color: var(--accent-green);
+}
+
+.api-status.connected .api-status-dot {
+    background: var(--accent-green);
+    box-shadow: 0 0 6px rgba(0, 230, 118, 0.6);
+    animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.api-status.disconnected {
+    background: rgba(148, 163, 184, 0.08);
+    border-color: rgba(148, 163, 184, 0.15);
+    color: var(--text-muted);
+}
+
+.api-status.disconnected .api-status-dot {
+    background: var(--text-muted);
+    box-shadow: none;
+    animation: none;
+}
+
+.api-status.error {
+    background: rgba(239, 83, 80, 0.1);
+    border-color: rgba(239, 83, 80, 0.25);
+    color: var(--accent-red);
+}
+
+.api-status.error .api-status-dot {
+    background: var(--accent-red);
+    box-shadow: 0 0 6px rgba(239, 83, 80, 0.5);
+}
+
+@keyframes dot-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(0,230,118,0.4); }
+    50%      { opacity: 0.6; box-shadow: 0 0 10px rgba(0,230,118,0.7); }
+}
+
 /* ── Upload Button ─────────────────────────────────────────────────────────── */
 .btn {
     display: inline-flex;
@@ -171,6 +244,182 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+/* ── Loading Overlay ───────────────────────────────────────────────────────── */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s var(--ease);
+}
+
+.loading-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    text-align: center;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+    max-width: 400px;
+    width: 90%;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(0, 230, 118, 0.15);
+    border-top-color: var(--accent-green);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.loading-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.loading-progress-track {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-card);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loading-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+    border-radius: 2px;
+    transition: width 0.3s linear;
+    animation: loading-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-shimmer {
+    0%   { width: 0%; }
+    50%  { width: 70%; }
+    100% { width: 95%; }
+}
+
+.loading-progress-fill.complete {
+    width: 100% !important;
+    animation: none;
+}
+
+/* ── Toast Notifications ───────────────────────────────────────────────────── */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    z-index: 1100;
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    pointer-events: auto;
+    animation: toast-in 0.35s var(--ease);
+    max-width: 380px;
+}
+
+.toast.toast-out {
+    animation: toast-out 0.3s var(--ease) forwards;
+}
+
+.toast-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.toast.success { border-left: 3px solid var(--accent-green); }
+.toast.error   { border-left: 3px solid var(--accent-red); }
+.toast.info    { border-left: 3px solid var(--accent-cyan); }
+.toast.warning { border-left: 3px solid var(--accent-orange); }
+
+@keyframes toast-in {
+    from { opacity: 0; transform: translateX(40px) scale(0.95); }
+    to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes toast-out {
+    from { opacity: 1; transform: translateX(0) scale(1); }
+    to   { opacity: 0; transform: translateX(40px) scale(0.95); }
+}
+
+/* ── Data Source Tag ───────────────────────────────────────────────────────── */
+.data-source-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: rgba(100, 116, 139, 0.08);
+    border: 1px dashed rgba(100, 116, 139, 0.15);
+    color: var(--text-muted);
+    transition: all 0.4s var(--ease);
+}
+
+.data-source-tag.backend {
+    background: rgba(0, 230, 118, 0.08);
+    border: 1px solid rgba(0, 230, 118, 0.2);
+    color: var(--accent-green);
+}
+
+.data-source-tag.standalone {
+    background: rgba(255, 167, 38, 0.08);
+    border: 1px dashed rgba(255, 167, 38, 0.2);
+    color: var(--accent-orange);
+}
+
+.data-source-tag.json-file {
+    background: rgba(66, 165, 245, 0.08);
+    border: 1px solid rgba(66, 165, 245, 0.2);
+    color: var(--accent-blue);
+}
+
+.data-source-icon {
+    font-size: 0.85rem;
 }
 
 /* ── Main Layout ───────────────────────────────────────────────────────────── */
@@ -613,5 +862,24 @@ input:checked + .toggle-slider::after {
         max-height: 40vh;
         border-left: none;
         border-top: 1px solid var(--border-subtle);
+    }
+    .header-right {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .api-status {
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    #app-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 16px;
+    }
+    .upload-area {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
